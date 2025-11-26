@@ -5,6 +5,8 @@ import Login from "../pages/Login"
 import Register from "../pages/Register"
 import MyItems from "../pages/MyItems"
 import Layout from "../pages/Layout"
+import CreateItem from "../pages/CreateItem"
+import MyBids from "../pages/MyBids"
 
 export const router = createBrowserRouter(
     [
@@ -28,12 +30,22 @@ export const router = createBrowserRouter(
             ]
         },
         {
-            path:"/Login",
+            path:"/login",
             element:<Login/>
         },
         {
             path:"/register",
             element:<Register />
+        },
+        {
+            path:"/create-item",
+            element:<CreateItem />
+        },
+        {
+            path:"/my-bids",
+            element:<MyBids />
         }
+
+
     ]
 )
