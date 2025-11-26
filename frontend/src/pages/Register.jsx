@@ -4,6 +4,7 @@ import { useUserStore } from "../store/useUserStore"
 import "../styles/Register.css"
 import Input from "../components/Input"
 import Button from "../components/Button"
+import { api } from "../api/api"
 
 const Register = () => {
     const [error, setError] = useState("")
@@ -42,7 +43,6 @@ const Register = () => {
                 <p className="auth-subtitle">Создайте новый аккаунт</p>
             </div>
 
-            {/* Ошибка от сервера или валидации */}
             {error && <div className="auth-error">{error}</div>}
 
             <form onSubmit={handleSubmit}>
@@ -53,6 +53,7 @@ const Register = () => {
                         name="username"
                         type="text"
                         placeholder="Введите имя пользователя"
+                        className="form-input" 
                         required
                     />
                     <div className="form-hint">Минимум 3 символа</div>
@@ -67,6 +68,7 @@ const Register = () => {
                         name="email"
                         type="email"
                         placeholder="Введите почту"
+                        className="form-input" 
                     />
                 </div>
 
@@ -77,6 +79,7 @@ const Register = () => {
                         name="password"
                         type="password"
                         placeholder="Введите пароль"
+                        className="form-input" 
                         required
                     />
                     <div className="password-strength">
@@ -92,11 +95,12 @@ const Register = () => {
                         name="password2"
                         type="password"
                         placeholder="Подтвердите пароль"
+                        className="form-input" 
                         required
                     />
                 </div>
 
-                <Button>Зарегистрироваться</Button>
+                <Button className="btn-submit">Зарегистрироваться</Button>
             </form>
 
             <div className="auth-divider">или</div>

@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom"
 import Board from "../pages/Board"
 import Logout from "../pages/Logout"
-import Login from "../pages/Login"
+import Login from "../pages/SignIn"
 import Register from "../pages/Register"
 import MyItems from "../pages/MyItems"
 import Layout from "../pages/Layout"
@@ -30,11 +30,11 @@ export const router = createBrowserRouter(
             ]
         },
         {
-            path:"/login",
+            path:"/auth/login",
             element:<Login/>
         },
         {
-            path:"/register",
+            path:"/auth/register",
             element:<Register />
         },
         {

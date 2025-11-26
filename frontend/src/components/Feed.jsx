@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react"
 import { api } from "../api/api"
+import { useUserStore } from "../store/useUserStore"
+import { useItemsStore } from "../store/useItemsStore"
 
-const Feed = ({ title = "товары" }) => {
-    const {messages, getMessages} = useItemStore()
-    const [timerId, stTimerId] = useState(undefined)
+const Feed = ({ title = "Сообщения", myOwn = false }) => {
+    const { items, getItems } = useItemsStore()
+    const [timerId, setTimerId] = useState(undefined)
+    const {session} = useUserStore()
+
     useEffect(() => {
-        getMessages()
-        setTimeId(setinterval(()=>{
+        getItems()
+        setTimerId(setInterval(() => {
             getMessages()
         }, 5000))
 
@@ -19,8 +23,13 @@ const Feed = ({ title = "товары" }) => {
                 <div className="container">
                     <h2 className="section-title">{title}</h2>
                     <div className="messages-grid">
-                        {messages.map((el, i) => (
-                            <MessageCard key={i} {...el} />
+                        {messages && myOwn ?  
+                        messages.filter((items) => items.userId == session.user.id)
+                        .map((message, i) => (
+                            <ItemsList key={i} {...message} />
+                        ))
+                        : messages.map((message, i) => (
+                            <ItemsList key={i} {...message} />
                         ))}
                     </div>
                 </div>

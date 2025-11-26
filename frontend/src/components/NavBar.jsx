@@ -1,6 +1,7 @@
 // src/components/Navbar.jsx
 import { Link } from 'react-router-dom'
 import { useUserStore } from '../store/useUserStore'
+
 const NavBar = () => {
     const { session } = useUserStore() 
 
@@ -27,12 +28,12 @@ const NavBar = () => {
                             </Link>
                         </li>
                         <li className="user-info">
-                            <span className="username">
+                            {/* <span className="username">
                                 {user?.username || 'username'}
-                            </span>
-                            <button className="btn-logout" onClick={() => {/* логика выхода */}}>
+                            </span> */}
+                            <Link to="/logout" className="btn-logout">
                                 Выйти
-                            </button>
+                            </Link>
                         </li>
                     </ul>
                 ) : (
@@ -41,10 +42,10 @@ const NavBar = () => {
                             <Link to="/">Товары</Link>
                         </li>
                         <li>
-                            <Link to="/login">Войти</Link>
+                            <Link to="/auth/login">Войти</Link>
                         </li>
                         <li>
-                            <Link to="/register" className="btn-primary">
+                            <Link to="/auth/register" className="btn-primary">
                                 Регистрация
                             </Link>
                         </li>
