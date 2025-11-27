@@ -12,5 +12,3 @@ const  useItemsStore = create((set) => ({
         }
     }
 }))
-
-export default useItemsStore

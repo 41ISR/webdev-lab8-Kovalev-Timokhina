@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { api } from "../api/api"
 import { useUserStore } from "../store/useUserStore"
-import { useItemsStore } from "../store/useItemsStore"
+
 
 const Feed = ({ title = "Сообщения", myOwn = false }) => {
     const { items, getItems } = useItemsStore()

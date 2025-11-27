@@ -1,12 +1,11 @@
 import { createBrowserRouter } from "react-router-dom"
-import Board from "../pages/Board"
+import ItemsList from "../pages/ItemsList"
 import Logout from "../pages/Logout"
-import Login from "../pages/SignIn"
 import Register from "../pages/Register"
-import MyItems from "../pages/MyItems"
 import Layout from "../pages/Layout"
 import CreateItem from "../pages/CreateItem"
 import MyBids from "../pages/MyBids"
+import SignIn from "../pages/SignIn"
 
 export const router = createBrowserRouter(
     [
@@ -20,18 +19,15 @@ export const router = createBrowserRouter(
             children:
             [
                 {
-                    path:"/board",
-                    element:<Board />
+                    path:"/items-list",
+                    element:<ItemsList />
                 },
-                {
-                    path:"/items",
-                    element:<MyItems/>
-                }
+                
             ]
         },
         {
             path:"/auth/login",
-            element:<Login/>
+            element:<SignIn/>
         },
         {
             path:"/auth/register",
