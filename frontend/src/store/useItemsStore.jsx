@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { api } from "../api/api";
 
 const  useItemsStore = create((set) => ({
-    messages: [],
+    items: [],
     getItems: async () => {
         try {
             const res = await api.getItems()
@@ -12,3 +12,5 @@ const  useItemsStore = create((set) => ({
         }
     }
 }))
+
+export default useItemsStore

@@ -82,7 +82,7 @@ const SignIn = () => {
                 <div className="auth-link">
                     Нет аккаунта? <div className="auth-footer">
                     <p>
-                        <Link to={"/signup"}>Регистрация</Link>
+                        <Link to={"/register"}>Регистрация</Link>
                     </p>
                 </div>
                 </div>

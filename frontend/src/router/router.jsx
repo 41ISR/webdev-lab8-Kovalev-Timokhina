@@ -10,37 +10,37 @@ import SignIn from "../pages/SignIn"
 export const router = createBrowserRouter(
     [
         {
-            path:"/logout",
-            element:<Logout />
+            path: "/logout",
+            element: <Logout />
         },
         {
-            path:"/",
-            element:<Layout/>,
+            path: "/",
+            element: <Layout />,
             children:
-            [
-                {
-                    path:"/items-list",
-                    element:<ItemsList />
-                },
-                
-            ]
+                [
+                    {
+                        index: true,
+                        element: <ItemsList />
+                    },
+
+                    {
+                        path: "/my-bids",
+                        element: <MyBids />
+                    },
+                    {
+                        path: "/create-item",
+                        element: <CreateItem />
+                    },
+                ]
         },
         {
-            path:"/auth/login",
-            element:<SignIn/>
+            path: "/login",
+            element: <SignIn />
         },
         {
-            path:"/auth/register",
-            element:<Register />
+            path: "/register",
+            element: <Register />
         },
-        {
-            path:"/create-item",
-            element:<CreateItem />
-        },
-        {
-            path:"/my-bids",
-            element:<MyBids />
-        }
 
 
     ]

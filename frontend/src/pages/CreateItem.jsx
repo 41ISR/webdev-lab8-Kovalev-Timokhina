@@ -1,6 +1,30 @@
+import Button from "../components/Button"
+import Input from "../components/Input"
 import "../styles/CreateItem.css"
+import { useState } from "react"
+import { api } from "../api/api"
+import useItemsStore from "../store/useItemsStore"
 
-const  CreateItem = () => {
+const CreateItem = () => {
+    const { getItems } = useItemsStore()
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const items = {
+             title: e.target.title.value,
+             description: e.target.description.value,
+             price: e.target.price.value,
+             imageUrl: e.target.imageUrl.value
+             }
+
+        try {
+            await api.sendItems(items)
+            await getItems()
+            e.target.reset()
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     return(
         <>
         <div className="page-header">
@@ -8,7 +32,7 @@ const  CreateItem = () => {
     </div>
 
     <div className="form-container">
-        <form id="create-item-form">
+        <form onSubmit={handleSubmit} id="create-item-form">
             <div className="form-group">
                 <label className="form-label">
                     Название товара <span className="required">*</span>
@@ -18,7 +42,7 @@ const  CreateItem = () => {
                     className="form-input" 
                     name="title"
                     placeholder="Например: iPhone 14 Pro 256GB"
-                    maxlength="100"
+                    maxLength="100"
                     required
                 />
                 <div className="char-counter">
@@ -34,7 +58,7 @@ const  CreateItem = () => {
                     className="form-textarea" 
                     name="description"
                     placeholder="Подробно опишите товар, его состояние, характеристики..."
-                    maxlength="1000"
+                    maxLength="1000"
                     required
                 ></textarea>
                 <div className="char-counter">
@@ -56,7 +80,6 @@ const  CreateItem = () => {
                         name="price"
                         placeholder="5000"
                         min="1"
-                        step="100"
                         required
                     />
                     <span className="input-prefix">₽</span>
@@ -86,7 +109,7 @@ const  CreateItem = () => {
 
             <div className="form-actions">
                 <a href="/" className="btn-cancel">Отмена</a>
-                <button type="submit" className="btn-submit">Создать товар</button>
+                <Button type="submit" className="btn-submit">Создать товар</Button>
             </div>
         </form>
     </div>

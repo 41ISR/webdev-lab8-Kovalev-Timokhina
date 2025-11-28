@@ -42,10 +42,10 @@ const NavBar = () => {
                             <Link to="/">Товары</Link>
                         </li>
                         <li>
-                            <Link to="/auth/login">Войти</Link>
+                            <Link to="/login">Войти</Link>
                         </li>
                         <li>
-                            <Link to="/auth/register" className="btn-primary">
+                            <Link to="/register" className="btn-primary">
                                 Регистрация
                             </Link>
                         </li>

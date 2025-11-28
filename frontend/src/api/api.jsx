@@ -3,7 +3,7 @@ import { use } from "react"
 import { useUserStore } from "../store/useUserStore"
 
 const apiInstance = axios.create({
-    baseURL: "https://kitek.ktkv.dev/marketplace/api",
+    baseURL: "https://cautious-pancake-x5v7rv45jjq92975j-3001.app.github.dev/api",
     headers: {
         "Content-Type": "application/json"
     }
@@ -43,16 +43,10 @@ const deleteItems = async (id) => {
     const res = await apiInstance.delete(`/items/${id}`)
     return res
 }
-
-const likeMessage = async (id) => {
-    const res = await apiInstance.post(`/messages/${id}/like`)
+ const getStats = async () => {
+    const res = await apiInstance.get("/stats")
     return res
-}
-
-const reportMessage = async (id) => {
-    const res = await apiInstance.post(`/messages/${id}/report`)
-    return res
-}
+ }
 
 export const api = {
     getItems,
@@ -60,6 +54,5 @@ export const api = {
     loginUser,
     sendItems,
     deleteItems,
-    reportMessage,
-    likeMessage
+    getStats
 }

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useUserStore } from "../store/useUserStore"
 import "../styles/Register.css"
 import Input from "../components/Input"
@@ -106,7 +106,7 @@ const Register = () => {
             <div className="auth-divider">или</div>
 
             <div className="auth-link">
-                Уже есть аккаунт? <a href="/login">Войти</a>
+                Уже есть аккаунт? <Link to={"/login"}>Войти</Link>
             </div>
         </div>
     )
