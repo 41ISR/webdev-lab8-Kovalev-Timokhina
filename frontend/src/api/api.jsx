@@ -47,6 +47,12 @@ const deleteItems = async (id) => {
     const res = await apiInstance.get("/stats")
     return res
  }
+ const getBids = async () => {
+    const res = await apiInstance.get("/bids/my")
+    console.log(res);
+    return res
+ }
+
 
 export const api = {
     getItems,
@@ -54,5 +60,6 @@ export const api = {
     loginUser,
     sendItems,
     deleteItems,
-    getStats
+    getStats,
+    getBids
 }

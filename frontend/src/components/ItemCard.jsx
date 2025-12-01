@@ -3,10 +3,6 @@ import useItemsStore from "../store/useItemsStore"
 import { useUserStore } from "../store/useUserStore"
 
 const ItemCard = ({title, description, price, bidInfo, username, status }) =>{
-    // const { session } = useUserStore()
-    // const { getMessages } = useItemsStore()
-
-    // const isOwn = session?.user.id === userId
     return (
 <div className="item-card">
                     <img src="https://via.placeholder.com/300x200/3498db/ffffff?text=Laptop" alt="Ноутбук Dell XPS 15" className="item-image"/>
