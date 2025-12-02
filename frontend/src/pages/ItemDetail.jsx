@@ -2,77 +2,75 @@ import { Link, useParams } from "react-router-dom"
 import "../styles/ItemDetail.css"
 import useItemsStore from "../store/useItemsStore"
 import { useEffect, useState } from "react"
+import { api } from "../api/api"
+import useUserStore from "../store/useUserStore"
+
+
 const ItemDetail = () => {
+    const { items, getItems } = useItemsStore()
     const [item, setItem] = useState(undefined)
     const {id} = useParams() 
-    const {items} = useItemsStore()
-
+    const {session} = useUserStore ()
+    const isOwn = session?.user.id === item?.userId
+    console.log(session, item);
+    
+    const handleDelete = async () =>{
+        await api.deleteItems(id)
+        await api.getItems()
+    }
+    const handlePost = async () => {
+        await api.postBids(amount)
+    }
     useEffect(() => {
-        items.find(item => items.id == )
-    }, [items])
+        getItems()
+    }, [])
+    useEffect(() => {
+        setItem(items.find(item  => item.id == id))
+    }, [items]) 
     return(
         <>
          <Link to={"/"} className="back-link">← Вернуться к списку товаров</Link>
 
-    <div className="item-detail">
+    {item && <div className="item-detail">
         <div className="item-header">
             <div>
-                <img src="https://via.placeholder.com/600x400/3498db/ffffff?text=Laptop" alt="Ноутбук Dell XPS 15" className="item-image-large"/>
+                {item.imageUrl}
             </div>
 
             <div className="item-info">
                 <span className="item-status">Активно</span>
                 
-                <h1 className="item-title-large">Ноутбук Dell XPS 15</h1>
+                <h1 className="item-title-large">{item.title}</h1>
                 
                 <div className="item-seller-info">
                     <div className="seller-avatar">TS</div>
                     <div className="seller-details">
-                        <div className="seller-name">techseller</div>
-                        <div className="seller-date">Опубликовано: 15 октября 2025</div>
+                        <div className="seller-name">{item.username}</div>
+                        <div className="seller-date">{item.createdAt}</div>
                     </div>
                 </div>
 
                 <div className="item-description-full">
-                    Мощный ноутбук для работы и игр в отличном состоянии. 
-                    
-                    <br></br>
-                    
-                    <strong>Характеристики:</strong>
-                    <ul>
-                        <li>Процессор: Intel Core i7-12700H (12 ядер)</li>
-                        <li>Оперативная память: 16GB DDR5</li>
-                        <li>Видеокарта: NVIDIA GeForce RTX 3050 (4GB)</li>
-                        <li>Накопитель: 512GB NVMe SSD</li>
-                        <li>Дисплей: 15.6" FHD (1920x1080), 144Hz</li>
-                        <li>Операционная система: Windows 11 Pro</li>
-                    </ul>
-
-                    <br></br>
-                    
-                    Ноутбук используется около года, в идеальном состоянии. Все аксессуары в комплекте: зарядное устройство, коробка, документы. 
-                    Гарантия действует еще 1 год.
+                    {item.description} 
                 </div>
 
                 <div className="price-section">
                     <div className="starting-price">Начальная цена:</div>
-                    <div className="current-price">65 000 ₽</div>
-                    <div className="highest-bid">Текущая ставка: 70 000 ₽</div>
+                    <div className="current-price">{item.price}</div>
+                    {item.highestBid && <div className="highest-bid">Текущая ставка:{item.highestBid}</div>}
 
                     <form className="bid-form">
                         <input 
                             type="number" 
                             className="bid-input" 
-                            placeholder="Введите вашу ставку (мин. 70 001 ₽)"
-                            min="70001"
-                            step="100"
+                            placeholder="Введите вашу ставку"
                         />
-                        <button type="submit" className="btn-bid">Сделать ставку</button>
+                        <button onClick={handlePost} type="submit" className="btn-bid">Сделать ставку</button>
                     </form>
                 </div>
 
                
-               <button className="btn-delete">Удалить товар</button>
+               {isOwn && <button onClick={handleDelete} className="btn-delete"><span>Удалить товар</span></button>}
             </div>
         </div>
 
@@ -145,7 +143,7 @@ const ItemDetail = () => {
                 <p>Ставок пока нет. Станьте первым!</p>
             </div>
         </div>
-    </div>
+    </div>}
     </>
     )
 }

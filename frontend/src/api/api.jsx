@@ -52,6 +52,12 @@ const deleteItems = async (id) => {
     console.log(res);
     return res
  }
+ const postBids = async () => {
+    const res = await apiInstance.post("/api/items/:id/bids")
+    console.log(res);
+    return res
+ }
+
 
 
 export const api = {
@@ -61,5 +67,6 @@ export const api = {
     sendItems,
     deleteItems,
     getStats,
-    getBids
+    getBids,
+    postBids
 }
