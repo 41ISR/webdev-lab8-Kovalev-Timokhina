@@ -6,6 +6,7 @@ import Layout from "../pages/Layout"
 import CreateItem from "../pages/CreateItem"
 import MyBids from "../pages/MyBids"
 import SignIn from "../pages/SignIn"
+import ItemDetail from "../pages/ItemDetail"
 
 export const router = createBrowserRouter(
     [

@@ -3,7 +3,7 @@ import { use } from "react"
 import { useUserStore } from "../store/useUserStore"
 
 const apiInstance = axios.create({
-    baseURL: "https://cautious-pancake-x5v7rv45jjq92975j-3001.app.github.dev/api",
+    baseURL: "https://kitek.ktkv.dev/marketplace/api",
     headers: {
         "Content-Type": "application/json"
     }
