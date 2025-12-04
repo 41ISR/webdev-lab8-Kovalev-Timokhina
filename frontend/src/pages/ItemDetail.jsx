@@ -34,7 +34,7 @@ const ItemDetail = () => {
     {item && <div className="item-detail">
         <div className="item-header">
             <div>
-                {item.imageUrl}
+                {/* <img>{item.imageUrl}</img> */}
             </div>
 
             <div className="item-info">

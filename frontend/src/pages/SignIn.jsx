@@ -52,7 +52,6 @@ const SignIn = () => {
                             id="username"
                             name="username"
                             type="text"
-                            label="Имя пользователя"
                             required
                             placeholder="Введите имя пользователя"
                             className="form-input"
@@ -66,7 +65,6 @@ const SignIn = () => {
                             id="password"
                             name="password"
                             type="password"
-                            label="Пароль"
                             required
                             placeholder="Введите пароль"
                             className="form-input"

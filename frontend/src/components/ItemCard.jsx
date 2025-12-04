@@ -3,14 +3,14 @@ import { api } from "../api/api"
 import useItemsStore from "../store/useItemsStore"
 import { useUserStore } from "../store/useUserStore"
 
-const ItemCard = ({id,title, description, price, bidInfo, username, status }) =>{
+const ItemCard = ({id,title, description, price, bidInfo, username, status, imageUrl }) =>{
     const navigate = useNavigate()
     const handleClick =() =>{
         navigate(`/item/${id}`)
     }
     return (
 <div onClick={handleClick} className="item-card">
-                    <img src="https://via.placeholder.com/300x200/3498db/ffffff?text=Laptop" alt="Ноутбук Dell XPS 15" className="item-image"/>
+                    <img src={imageUrl} />
                         <div className="item-content">
                             <span className="status-badge status-active">{status}</span>
                             <h3 className="item-title">{title}</h3>
